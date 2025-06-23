@@ -44,7 +44,7 @@
 - [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
 - [Postman](https://marketplace.visualstudio.com/items?itemName=Postman.postman-for-vscode)
 
-#### Angular Command Line Interface
+#### Instalación del Angular Command Line Interface
 
     npm install -g @angular/cli
     ng version
