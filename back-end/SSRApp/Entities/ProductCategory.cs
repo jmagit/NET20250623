@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace SSRApp.Entities;
 
@@ -21,12 +22,14 @@ public partial class ProductCategory
     /// </summary>
     [Key]
     [Column("ProductCategoryID")]
+    [JsonProperty("id")]
     public int ProductCategoryId { get; set; }
 
     /// <summary>
     /// Product category identification number of immediate ancestor category. Foreign key to ProductCategory.ProductCategoryID.
     /// </summary>
     [Column("ParentProductCategoryID")]
+    [JsonProperty("parentid")]
     public int? ParentProductCategoryId { get; set; }
 
     /// <summary>
@@ -34,27 +37,33 @@ public partial class ProductCategory
     /// </summary>
     [Required]
     [StringLength(50)]
-    public string Name { get; set; }
+    [JsonProperty("category")]
+   public string Name { get; set; }
 
     /// <summary>
     /// ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
     /// </summary>
     [Column("rowguid")]
+    [JsonIgnore]
     public Guid Rowguid { get; set; }
 
     /// <summary>
     /// Date and time the record was last updated.
     /// </summary>
     [Column(TypeName = "datetime")]
+    [JsonIgnore]
     public DateTime ModifiedDate { get; set; }
 
     [InverseProperty("ParentProductCategory")]
+    [JsonIgnore]
     public virtual ICollection<ProductCategory> InverseParentProductCategory { get; set; } = new List<ProductCategory>();
 
     [ForeignKey("ParentProductCategoryId")]
     [InverseProperty("InverseParentProductCategory")]
+    [JsonIgnore]
     public virtual ProductCategory ParentProductCategory { get; set; }
 
     [InverseProperty("ProductCategory")]
+    [JsonIgnore]
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

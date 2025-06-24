@@ -68,22 +68,4 @@ public partial class ProductDetail {
         };
     }
 
-    public static Product from(ProductEdit item) {
-        return new Product {
-            ProductId = item.ProductId,
-            Name = item.Name,
-            ProductNumber = item.ProductNumber,
-            Color = item.Color,
-            StandardCost = item.StandardCost,
-            ListPrice = item.ListPrice,
-            Size = item.Size,
-            Weight = item.Weight,
-            ProductCategoryId = item.ProductCategoryId,
-            ProductModelId = item.ProductModelId,
-            SellStartDate = item.SellStartDate,
-            SellEndDate = item.SellEndDate,
-            DiscontinuedDate = item.DiscontinuedDate
-        };
-    }
-
 }

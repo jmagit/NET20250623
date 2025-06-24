@@ -46,7 +46,7 @@ namespace SSRApp {
             });
 
             app.UseRouting();
-
+            app.UseCors("AllowAll");
             app.UseAuthorization();
 
             app.MapStaticAssets();
@@ -56,6 +56,7 @@ namespace SSRApp {
                 .WithStaticAssets();
             app.MapRazorPages()
                .WithStaticAssets();
+            app.MapGet("/oops", () => "Oops! An error happened.");
 
             app.Run();
         }
