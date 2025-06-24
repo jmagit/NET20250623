@@ -21,6 +21,16 @@ namespace SSRApp {
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddControllers().AddXmlSerializerFormatters();
+            builder.Services.AddOpenApi(options => {
+                options.AddDocumentTransformer((document, context, cancellationToken) => {
+                    document.Info = new() {
+                        Title = "Demos del curso", Version = "v1", Description = "Un ejemplo simple ASP.NET Core Web API"
+                    };
+                    return Task.CompletedTask;
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -29,6 +39,12 @@ namespace SSRApp {
             } else {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.MapOpenApi();
+            app.UseSwaggerUI(options => {
+                options.SwaggerEndpoint("/openapi/v1.json", "v1");
+            });
+
             app.UseRouting();
 
             app.UseAuthorization();
