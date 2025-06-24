@@ -6,9 +6,6 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -60,7 +57,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ProductModel)
             </th> *@
-            <th></th>
+            <th><a asp-action="Create">Create New</a></th>
         </tr>
     </thead>
     <tbody>
@@ -123,6 +120,8 @@
 }
     </tbody>
 </table>
+
+<partial name="_Paginacion" />
 
 @section Scripts {
     <script>

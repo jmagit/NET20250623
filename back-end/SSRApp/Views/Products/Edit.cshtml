@@ -73,7 +73,7 @@
                 <input asp-for="DiscontinuedDate" class="form-control" />
                 <span asp-validation-for="DiscontinuedDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @* <div class="form-group">
                 <label asp-for="ThumbNailPhoto" class="control-label"></label>
                 <input asp-for="ThumbNailPhoto" class="form-control" />
                 <span asp-validation-for="ThumbNailPhoto" class="text-danger"></span>
@@ -92,16 +92,13 @@
                 <label asp-for="ModifiedDate" class="control-label"></label>
                 <input asp-for="ModifiedDate" class="form-control" />
                 <span asp-validation-for="ModifiedDate" class="text-danger"></span>
-            </div>
+            </div> *@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Back to List</a>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

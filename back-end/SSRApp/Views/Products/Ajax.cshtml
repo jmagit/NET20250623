@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SSRApp.Entities.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de productos</h1>
+
+
+<ul id="listado" class="list-group">
+
+</ul>
+<nav aria-label="Page navigation">
+    <ul id="paginas" class="pagination justify-content-end">
+    </ul>
+</nav>
+
+<div id="loading">
+    <div class="ajax-wait"></div>
+    <div class="loader"></div>
+</div>
+
+@section Scripts {
+    <script>
+        let listado = $('#listado')
+        let paginas = $('#paginas')
+        let loading = $('#loading')
+        function pagina(page) {
+            loading.show()
+            fetch(`/api/products?page=${page}&size=14`).then(resp => resp.json()).then(body =>  {
+                loading.hide()
+                let count = 0
+                listado.empty()
+                for(item of body.content) {
+                    let li = $(`<li>${item.name}</li>`).addClass('list-group-item')
+                    if(count++ % 2) li.addClass('list-group-item-primary')
+                    listado.append(li)
+                }
+                paginas.empty()
+                for (pag = 0; pag <= body.totalPages; pag++) {
+                    let li = $(`<li />`).addClass('page-item')
+                    if(pag === body.number) li.addClass('active')
+                    let btn = $(`<input type="button" value="${pag + 1}">`)
+                            .click(ev => pagina(ev.target.value - 1))
+                            .addClass('page-link')
+                    li.append(btn)
+                    paginas.append(li)
+                }
+            }).catch(() => loading.hide())
+        }
+        pagina(0)
+    </script>
+}

@@ -20,10 +20,12 @@ namespace SSRApp.Controllers
         }
 
         // GET: Products
-        public async Task<IActionResult> Index(int numpag=0, int pagesize=10)
+        public async Task<IActionResult> Index([FromQuery(Name = "page")] int numpag = 0, [FromQuery(Name = "size")] int pagesize=14)
         {
+            ViewBag.PagActual = numpag;
+            ViewBag.UltimaPagina = (int)Math.Floor((double)_context.Products.Count() / pagesize);
             var adventureWorksContext = _context.Products
-                .Where(e => e.StandardCost > 1)
+                //.Where(e => e.StandardCost > 1)
                 .OrderBy(e => e.Name)
                 .Skip(numpag * pagesize)
                 .Take(pagesize);
@@ -164,6 +166,9 @@ namespace SSRApp.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Ajax() {
+            return View();
         }
 
         private bool ProductExists(int id)
