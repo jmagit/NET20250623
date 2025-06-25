@@ -1,1 +1,5 @@
-<p>header works!</p>
+<header>
+  @for(item of menu; track item.path) {
+    <a [routerLink]="item.path" routerLinkActive="active" >{{item.texto}}</a> |
+  }
+</header>
