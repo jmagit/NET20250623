@@ -141,7 +141,11 @@ namespace SSRApp.Controllers.api {
             }
 
             _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
+            try {
+                await _context.SaveChangesAsync();
+            } catch(Exception ex) {
+                return Problem(ex.InnerException?.Message ?? ex.Message, statusCode: 400);
+            }
 
             return NoContent();
         }

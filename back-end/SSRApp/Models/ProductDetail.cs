@@ -60,8 +60,8 @@ public partial class ProductDetail {
             ListPrice = item.ListPrice,
             Size = item.Size,
             Weight = item.Weight,
-            ProductCategory = item.ProductCategory.Name,
-            ProductModel = item.ProductModel.Name,
+            ProductCategory = item.ProductCategory?.Name,
+            ProductModel = item.ProductModel?.Name,
             SellStartDate = item.SellStartDate,
             SellEndDate = item.SellEndDate,
             DiscontinuedDate = item.DiscontinuedDate
