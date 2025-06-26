@@ -2,7 +2,7 @@ import { Routes, UrlSegment } from '@angular/router';
 import { Home, PageNotFound } from './main';
 import { Modelos } from './modelos';
 import { Categorias } from './categorias';
-import { AuthWithRedirectCanActivate, LoginForm, RegisterUser } from './security';
+import { AuthCanActivateFn, AuthWithRedirectCanActivate, LoginForm, RegisterUser } from './security';
 import { Demos } from './ejemplos';
 
 export function svgFiles(url: UrlSegment[]) {
@@ -21,9 +21,9 @@ export const routes: Routes = [
   //   { path: ':id/:kk', component: Productos},
   // ]},
   { path: 'modelos', component: Modelos},
-  { path: 'categorias', component: Categorias},
+  { path: 'categorias', component: Categorias, canActivate: [AuthCanActivateFn]},
   { matcher: svgFiles, loadComponent: () => import('./ejemplos/grafico-svg/grafico-svg')},
-  { path: 'demos', component: Demos /*, canActivate: [AuthWithRedirectCanActivate('/login')]*/},
+  { path: 'demos', component: Demos , canActivate: [AuthWithRedirectCanActivate('/login')]},
 
   { path: 'login', component: LoginForm },
   { path: 'registro', component: RegisterUser },

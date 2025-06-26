@@ -1,6 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { LoggerService } from '@my/core';
 import { Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export enum NotificationType {
   error = 'error',
@@ -42,7 +43,7 @@ export class NotificationService implements OnDestroy  {
     this.listado.push(n);
     this.notificacion$.next(n);
     // Redundancia: Los errores también se muestran en consola
-    if (type === NotificationType.error) {
+    if (!environment.production && type === NotificationType.error) {
       this.out.error(`NOTIFICATION: ${msg}`);
     }
   }
