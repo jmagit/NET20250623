@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SSRApp.Data;
@@ -43,6 +44,7 @@ namespace SSRApp.Controllers.api {
         // GET: api/Categorias/5
         [HttpGet("{id}")]
         [Produces("application/json", "application/xml")]
+        [Authorize()]
         public async Task<ActionResult<ProductCategory>> GetProductCategory(int id) {
             var c = await _context.ProductCategories.FindAsync(id);
 
