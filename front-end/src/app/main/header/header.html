@@ -1,5 +1,22 @@
 <header>
-  @for(item of menu; track item.path) {
-    <a [routerLink]="item.path" routerLinkActive="active" >{{item.texto}}</a> |
-  }
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/" tabindex="0"><img class="rounded" src="images/logo.png"
+          alt="Logotipo corporativo" height="60"></a> <button class="navbar-toggler" type="button"
+        data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
+          @for(item of menu; track item.path) {
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="item.path">{{item.texto}}</a>
+          </li>
+          }
+        </ul>
+        <app-login />
+      </div>
+    </div>
+  </nav>
 </header>

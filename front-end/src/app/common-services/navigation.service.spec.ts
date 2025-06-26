@@ -8,7 +8,7 @@ describe('NavigationService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ LoggerService, { provide: ERROR_LEVEL, useValue: 0 } ],
+      providers: [ { provide: ERROR_LEVEL, useValue: 0 } ],
     });
     service = TestBed.inject(NavigationService);
     log = TestBed.inject(LoggerService);

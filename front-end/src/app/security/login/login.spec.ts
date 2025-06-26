@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { LoginComponent, LoginFormComponent } from './login';
+import { Login, LoginForm } from './login';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { NotificationService, WindowService } from 'src/app/common-services';
 import { LoginService } from '../security.service';
@@ -12,10 +12,10 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideLocationMocks } from '@angular/common/testing';
 import { provideRouter } from '@angular/router';
 
-describe('LoginComponent', () => {
+describe('Login', () => {
   const apiURL = environment.securityApiURL
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+  let component: Login;
+  let fixture: ComponentFixture<Login>;
   let loginSrv: LoginService
 
   beforeEach(async() => {
@@ -24,14 +24,14 @@ describe('LoginComponent', () => {
         providers: [LoginService, AuthService, NotificationService, LoggerService,
           provideHttpClient(), provideHttpClientTesting(), provideRouter([]), provideLocationMocks(),
         ],
-        imports: [FormsModule, LoginComponent],
+        imports: [FormsModule, Login],
         schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(Login);
     component = fixture.componentInstance;
     loginSrv = TestBed.inject(LoginService)
     fixture.detectChanges();
@@ -94,10 +94,10 @@ describe('LoginComponent', () => {
   }));
 });
 
-describe('LoginFormComponent', () => {
+describe('LoginForm', () => {
   const apiURL = environment.securityApiURL
-  let component: LoginFormComponent;
-  let fixture: ComponentFixture<LoginFormComponent>;
+  let component: LoginForm;
+  let fixture: ComponentFixture<LoginForm>;
   let loginSrv: LoginService
 
   beforeEach(async () => {
@@ -105,12 +105,12 @@ describe('LoginFormComponent', () => {
     providers: [LoginService, AuthService, NotificationService, LoggerService, WindowService,
       provideHttpClient(), provideHttpClientTesting(), provideRouter([]), provideLocationMocks(),
     ],
-    imports: [FormsModule, LoginFormComponent],
+    imports: [FormsModule, LoginForm],
     schemas: [NO_ERRORS_SCHEMA]
 })
     .compileComponents();
 
-    fixture = TestBed.createComponent(LoginFormComponent);
+    fixture = TestBed.createComponent(LoginForm);
     component = fixture.componentInstance;
     loginSrv = TestBed.inject(LoginService)
     fixture.detectChanges();

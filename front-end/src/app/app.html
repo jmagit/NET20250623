@@ -1,5 +1,9 @@
 <app-header />
-<main class="container-fluid">
-  <router-outlet />
-</main>
+<app-notification-modal />
+<app-ajax-wait />
+<div  class="container-fluid" style="min-height: 50vh">
+  <main class="pb-3">
+    <router-outlet />
+  </main>
+</div>
 <app-footer />

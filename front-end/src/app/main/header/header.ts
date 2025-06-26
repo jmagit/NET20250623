@@ -1,19 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Login } from "../../security/login/login";
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [ RouterLink ],
+  imports: [Login, RouterLink, RouterLinkActive],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })
 export class Header {
   menu = [
-      { path: '/inicio', texto: 'Home'},
-      { path: '/productos', texto: 'Productos'},
-      { path: '/modelos', texto: 'Modelos'},
-      { path: '/categorias', texto: 'Categorias'},
-      { path: '/algo.svg', texto: 'Grafica'},
-      { path: '/falsa', texto: 'Error'},
+    { path: '/inicio', texto: 'Inicio' },
+    { path: '/productos', texto: 'Productos' },
+    { path: '/categorias', texto: 'Categorias' },
+    { path: '/modelos', texto: 'Modelos' },
+    { path: '/algo.svg', texto: 'Grafica'},
+    { path: '/demos', texto: 'Demos' },
+    { path: '/falsa', texto: 'Error' },
   ]
 }

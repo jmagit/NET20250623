@@ -1,15 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegisterUserComponent } from './register-user';
+import { RegisterUser } from './register-user';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
 import { LoggerService } from '@my/core';
 import { provideHttpClient } from '@angular/common/http';
 
-describe('RegisterUserComponent', () => {
-  let component: RegisterUserComponent;
-  let fixture: ComponentFixture<RegisterUserComponent>;
+describe('RegisterUser', () => {
+  let component: RegisterUser;
+  let fixture: ComponentFixture<RegisterUser>;
 
   beforeEach(async() => {
     const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
@@ -17,13 +17,13 @@ describe('RegisterUserComponent', () => {
         schemas: [NO_ERRORS_SCHEMA],
         providers: [LoggerService, provideHttpClient(), provideHttpClientTesting(),
             { provide: Router, useValue: routerSpy }],
-        imports: [RegisterUserComponent,],
+        imports: [RegisterUser,],
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RegisterUserComponent);
+    fixture = TestBed.createComponent(RegisterUser);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
