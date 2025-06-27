@@ -14,7 +14,7 @@ import { Component, input, output, Signal, computed } from '@angular/core';
               </li>
               }
               <li class="page-item" [class.disabled]="actual() === ultima()">
-                <input type="button" class="page-link" value="&raquo;" (click)="pageChange.emit(ultima())" >
+                <input type="button" class="page-link" value="&raquo;" (click)="pageChange.emit(ultima() - 1)" >
               </li>
           </ul>
       </nav>
